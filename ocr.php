@@ -25,7 +25,7 @@ if (!$base64) {
 // }
 
 $payload = [
-    'base64Image' => "data:image/png;base64," . $base64,
+    'base64Image' => $base64,
     'language' => 'eng',
     'isOverlayRequired' => 'false',
     'OCREngine' => 1,
