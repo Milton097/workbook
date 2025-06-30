@@ -3,6 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+set_time_limit(60);  // Allow up to 60 seconds for OCR
+ini_set('default_socket_timeout', 60); // Ensure HTTP calls wait long enough
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -41,7 +43,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'apikey: ' . $apiKey,
     'Content-Type: application/x-www-form-urlencoded'
 ]);
-
+curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 
 $response = curl_exec($ch);
 $err = curl_error($ch);
